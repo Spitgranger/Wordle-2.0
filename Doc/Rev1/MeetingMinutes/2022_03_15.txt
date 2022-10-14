@@ -1,0 +1,4 @@
+Meeting Minutes Thurs Mar 17, 2022
+Topics Discussed: Rev0 demo, Code regarding wordle
+
+Implementation of the game for rev0 was discussed. The team hopes to have all features except share and word lengths implemented for the rev0 demo.

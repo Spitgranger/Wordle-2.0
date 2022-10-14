@@ -1,0 +1,6 @@
+Meeting Minutes Tues Feb 22, 2022
+
+Topics Discussed: Proof of concept demo
+
+The work was divided for the proof of concept demo. It was decided that Noel and Biranugan work on the backend, while Richard works the frontend as well as the slides.
+The team has agreed to meet again Friday Feb 25 to share their results and discuss any issues.

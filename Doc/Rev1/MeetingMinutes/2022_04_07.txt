@@ -1,0 +1,4 @@
+Meeting Minutes Thurs Apr 7, 2022
+Topics Discussed: Code regarding wordle, Final Demo
+
+Discussed changes to documentation for final. Test report structure and cases also mentioned.

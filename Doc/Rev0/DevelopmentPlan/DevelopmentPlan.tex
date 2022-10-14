@@ -1,0 +1,195 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+\title{SE 3XA3: Development Plan\\Wordle 2.0}
+
+\author{Group 8
+	\\ Richard Fan, fanr13
+	\\ Noel Zacharia, zacharin
+	\\ Biranugan Pirabaharan, pirabahb
+}
+
+\date{}
+
+\begin{document}
+	
+	\begin{table}[hp]
+		\caption{Revision History} \label{TblRevisionHistory}
+		\begin{tabularx}{\textwidth}{llX}
+			\toprule
+			\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+			\midrule
+			2022/02/01 & Noel Zacharia & Initial draft, Sections 1,7,8\\
+			2022/02/03 & Richard Fan & Team Meeting Plan, Team Communication 
+			Plan, Team Roles\\
+			2022/02/03 & Biranugan Pirabaharan & Sections 5 and 6\\
+			2022/02/04 & Richard Fan & Corrected grammar and word choice\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	
+	\newpage
+	
+	\maketitle
+	
+	\section{Introduction}
+	This document is the Development Plan for the project 
+	\href{https://gitlab.cas.mcmaster.ca/zacharin/wordle_clone_3xa3_l01_group8}{Wordle
+		2.0}.
+	
+	\section{Team Meeting Plan}
+	Below is the team meeting schedule.
+	\begin{table}[hp]
+		\begin{tabularx}{\textwidth}{|l|l|X|}
+			\toprule
+			\textbf{Where} & \textbf{When} & \textbf{Length}\\
+			\midrule
+			MS Teams L01 & Every Tuesday and Thursday @ 9:30 AM & 2 Hours Each 
+			Session\\
+			Facebook Messenger & Every Saturday at 9:00 PM & 2 Hours\\
+			\bottomrule
+		\end{tabularx}
+		\caption{Team Meeting Plan} \label{tab:teamMeetingPlan}
+	\end{table}
+	\newline
+	The team has decided to meet during the two weekly lab sessions and 
+	Saturday. Additional sessions may be added if deemed necessary by the team.
+	\subsection{Agenda Rules}
+	\begin{enumerate}
+		\item A meeting agenda will be completed before every meeting 
+		containing 
+		the 
+		following information:
+		\begin{enumerate}
+			\item Outline of the meeting
+			\item Meeting topics/issues
+			\item Who is to lead each topic
+			\item Approximate timeline for each topic
+		\end{enumerate}
+		\item All team members will contribute to the agenda in between 
+		meetings.
+		\item The agenda is to be uploaded to the repository 10 minutes before 
+		the start of the meeting.
+		\item The chair will be responsible for the smooth flow of the meeting.
+		\item A member will be assigned to record the minutes of the meeting.
+		\item All members of the team shall be present unless otherwise 	
+		communicated.
+		\item If a member is unable to attend a meeting, they must let another 
+		member know so the meeting can be rescheduled accordingly.
+	\end{enumerate}
+	\subsection{Meeting Roles}
+	The following meeting roles have been defined:
+	\begin{description}
+		\item[Chair] The role of the chair is to ensure that the meeting 
+		progresses 
+		smoothly. They lead the meeting according to the set agenda. 
+		They 
+		let members know when it is their turn to speak 
+		and when their turn ends. They may also be responsible for facilitating 
+		conflict resolution.
+		\item[Recorder] The role of the recorder is to keep a record of the 
+		meetings. This may include key decisions, problems, and solutions 
+		discussed. The recorder is responsible for compiling this record into a 
+		standard document.
+		\item[Participant] The role of the participant is to actively attend 
+		and 
+		contribute to the meeting. They should participate in any discussion 
+		and be 
+		prepared to offer their thoughts on topics presented. 
+	\end{description}
+	
+	\section{Team Communication Plan}
+	Meetings are to be conducted over voice calls through Microsoft Teams or 
+	Facebook Messenger. Team members should be present at the scheduled start 
+	time. 
+	A 
+	Facebook group chat has also been created for team members. This group chat 
+	will be used for any urgent communication outside of scheduled meetings. 
+	Any 
+	issues with the code shall be flagged and communicated using Git issues.
+	
+	\section{Team Member Roles}
+	It is decided that the roles will rotate each meeting. Each member of 
+	the 
+	team will take turns becoming the Chair, Recorder, and Participant. The 
+	roles 
+	will rotate based on each member's last name to ensure that members do not 
+	repeat roles in the next meeting. Since team members have similar 
+	experiences 
+	in the technology used, all team members have agreed to work on 
+	all 
+	aspects of the project. The assignment of work will be decided and agreed 
+	upon by all team members. This assignment will be documented using a Gantt 
+	chart.
+	
+	\section{Git Workflow Plan}
+	As Dr.Bokhari suggested in lecture we will be using a feature-branch 
+	workflow model. With this model, we will develop all the project’s 
+	features in separate branches. This way developers can update and peer
+	review the features without concern of other work being affected. 
+	Eventually, these branches are to be merged to the main branch after the
+	features have been tested and the developers are fully confident in its 
+	functionality. Thus, throughout the term and the lifetime of the project,
+	the main branch will remain fully functional. All commits must include
+	clear, descriptive messages. This helps with any issue tracking and allows
+	for easy resets or reverts to previous stable versions if they are needed. 
+	We will use milestones that align with and follow the deliverables as they 
+	are listed in the outline. This is to help stay on track and meet deadlines.
+	
+	\section{Proof of Concept Demonstration Plan}
+	We have limited experience when it comes to testing JavaScript. We will
+	need to explore our options for testing to ensure we can develop the best
+	tests we can. Currently, we are learning more about frameworks such as JEST
+	and Cypress. We hope to have a better understanding before developing the
+	test plan. This will help us understand the scope of the tests we can
+	develop. We are not very familiar with React and TypeScript. We will have a
+	bit of a learning curve to grasp the basics, so we can better understand
+	the source code. This will require us to spend some time before development
+	to practice and explore the nuances of the languages used in the original
+	code. Through the plethora of online resources, we should be able to learn
+	everything we need. To help get through these hurdles, we will attempt to
+	create a minimalistic high-fidelity prototype of the game to ensure we can
+	learn the basics for when we start the full development process. This
+	version will not be flawless but simply a first attempt at converting the
+	source code into our implementation. This simply serves to confirm we
+	have the knowledge to do so and gives us good practice.
+	
+	\section{Technology}
+	\subsection{Programming Language}
+	The code will be written using the latest version of JavaScript. JavaScript 
+	was 
+	chosen because it is a common programming language used in front-end 
+	development. Team members have familiarity with JavaScript.
+	\subsection{IDE}
+	The IDE that will be used is Visual Studio Code. This is a relatively 
+	common 
+	IDE with great support for extensions.
+	\subsection{Testing}
+	DOM Testing will be done to ensure the components are rendered correctly. 
+	We 
+	will use a common testing framework such as JEST or Cypress to ensure unit 
+	testing is done.
+	\subsection{Documentation}
+	This project will be documented using LaTeX and Doxygen and will be made 
+	available in the project repository on GitLab.
+	
+	\section{Coding Style}
+	The goal is to maintain readability. To ensure this we will be 
+	attempting to consistently use PascalCase in our codebase.
+	
+	\section{Project Schedule}
+	
+	Our 
+	\href{https://gitlab.cas.mcmaster.ca/zacharin/wordle_clone_3xa3_l01_group8/-/tree/main/ProjectSchedule}{Gantt
+		chart} will be updated as the project progresses.
+	
+	\section{Project Review}
+	Not applicable yet.
+	
+\end{document}

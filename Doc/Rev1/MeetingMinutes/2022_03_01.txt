@@ -1,0 +1,4 @@
+Meeting Minutes Tues Mar 1, 2022
+Topics Discussed: Test Plan
+
+Partitioning work for the next deliverable, the test plan. 

@@ -1,0 +1,874 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{multirow}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Plan\\Wordle 2.0}
+
+\author{Team 8, Goufs
+		\\ Richard Fan, fanr13
+		\\ Noel Zacharia, zacharin
+		\\ Biranugan Pirabaharan, pirabahb
+}
+
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+Mar 1, 2022 & 1.0 & Initial Document\\
+Mar 3, 2022 & 1.1 & Finished section 1 and 2\\
+Mar 5, 2022 & 1.2 & Tests for functional requirements\\
+Mar 9, 2022 & 1.3 & Tests for non functional requirements\\
+Mar 10, 2022 & 1.4 & Traceability Matrices added\\
+Mar 11, 2022 & 1.5 & Fixed grammar mistakes\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+
+\section{General Information}
+
+\subsection{Purpose}
+This document describes the tests, methods and tools that will be used to 
+verify the functional and non-functional requirements for Wordle 2.0. These 
+methods serve as a guide to test the software once it has been fully 
+implemented. The purpose of these tests is to discover and correct any 
+potential 
+errors that may have occurred during implementation and ensure adherence to 
+the Software Requirements Specification.
+
+\subsection{Scope}
+The test cases described within this document cover all requirements, both 
+non-functional and functional, that were specified within the Software 
+Requirements Specification. Tests will be conducted as development progresses 
+and this document will be updated accordingly. 
+
+\subsection{Acronyms, Abbreviations, and Symbols}
+
+\begin{table}[hbp]
+	\caption{\textbf{Table of Abbreviations}} \label{Table}
+	
+	\begin{tabularx}{\textwidth}{p{3cm}X}
+		\toprule
+		\textbf{Abbreviation} & \textbf{Definition} \\
+		\midrule
+		CSS & Cascading Style Sheets\\
+		GUI & Graphical User Interface\\
+		HTML & Hypertext Markup Language\\
+		JS & Javascript\\
+		\bottomrule
+	\end{tabularx}
+	
+\end{table}
+
+\begin{table}[!htbp]
+	\caption{\textbf{Table of Definitions}} \label{Table}
+	
+	\begin{tabularx}{\textwidth}{p{3cm}X}
+		\toprule
+		\textbf{Term} & \textbf{Definition}\\
+		\midrule
+		Cascading Style Sheets & The stylesheet language used to style the 
+		project\\
+		\hline
+		Javascript[JS] & The programming language used to provide interactivity 
+		in the 
+		project\\
+		\hline
+		Game Board & A collection of boxes on which the letters will be 
+		displayed.\\
+		\hline
+		Graphical User Interface &  A representation of the program allowing 
+		for user 
+		interaction.\\
+		\hline
+		HTML & The markup language used to structure the project\\
+		\hline
+		Keyboard & The area on the screen where the player selects individual 
+		letters.\\
+		\hline
+		Mocha & One of the testing frameworks used.\\
+		\hline
+		Not Wordle & The original game on which this project is based.\\
+		\hline
+		Player & The individual who is playing the game.\\
+		\hline
+		Player Statistics & A collection of values showing the win/loss rate 
+		and number 
+		of guesses.\\
+		\hline
+		Selenium & The UI testing framework used.\\
+		\hline
+		Software Requirements Specification & A document that describes a 
+		software 
+		system's performance and functionality.\\
+		\hline
+		Tester & A person who is testing the program by way of using the 
+		program.\\
+		\hline
+		Typescript & The programming language used in the original Not Wordle 
+		game.\\
+		
+		\bottomrule
+	\end{tabularx}
+	
+\end{table}	
+
+\subsection{Overview of Document}
+The document contains a description of the software, the tools and methods used 
+to test the software, and the team that will be testing it. It includes 
+all the test cases that will be used to verify the software's adherence to the 
+all SRS requirements. Also, a comparison to the original Wordle game is 
+provided.
+
+\section{Plan}
+	
+\subsection{Software Description}
+Wordle 2.0 is the reimplementation of the game Wordle. It is built using 
+JavaScript, CSS, and HTML.
+\subsection{Test Team}
+All members of Group-8 are responsible for writing and executing tests:
+\begin{enumerate}
+    \item Richard Fan
+    \item Biranugan Pirabaharan
+    \item Noel Zacharia
+\end{enumerate}
+In addition to this, once the product is in the final stages of development, we would seek user feedback by recruiting volunteers.
+
+\subsection{Automated Testing Approach}
+As our project is a GUI-based game, automated testing will be a minor aspect of 
+our testing framework. We plan on testing via obtaining user feedback and 
+verification of different game scenarios. However, we will be writing automated 
+unit tests for different components of the game using the Selenium Testing 
+Framework. For unit tests concerning internal functions, we will be using Mocha.
+\subsection{Testing Tools}
+Mocha is a JavaScript testing framework that runs both on Node.js and the 
+browser. Mocha will allow for unit tests to be conducted on internal functions 
+within the game. The main testing tool we will be using is Selenium. Selenium 
+is an 
+open-source testing framework for web applications. Selenium allows for 
+automated testing of the UI components and thus allows us to verify the 
+rendering of page elements. Python will be used to write Selenium test scripts.
+\subsection{Testing Schedule}
+		
+The testing schedule is described in the Gantt chart.
+
+\section{System Test Description}
+	
+\subsection{Tests for Functional Requirements}
+
+\subsubsection{User Interface Tests}
+
+\begin{enumerate}
+
+\item{FR-UI1\\}
+
+Type: Functional, Manual 
+					
+Initial State: Empty web browser page.
+					
+Input: A start game event.
+					
+Output: An on screen keyboard with a QWERTY layout, containing enter and delete 
+keys.
+					
+How test will be performed: A tester will open the game within a web browser 
+and check that an on screen keyboard of QWERTY layout is displayed.
+					
+\item{FR-UI2\\}
+
+Type: Functional, Manual
+					
+Initial State: An blank web browser page.
+					
+Input: A start game event.
+					
+Output: A game board of with 6 columns and 5 rows.
+					
+How test will be performed:  A tester will open the game within a web browser 
+and check that a game board with 5 rows and 6 columns is displayed.
+
+\item{FR-UI3\\}
+
+Type: Functional, Automated, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: The theme button is pressed.
+
+Output: The theme of the game changes.
+
+How test will be performed: An automated script will click on the theme button 
+and 
+check if the styling has changed. 
+
+\item{FR-UI4\\}
+
+Type: Functional, Manual, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: The rules button is pressed.
+
+Output: A message box is displayed containing the instructions of the game.
+
+How test will be performed: A tester will click on the instructions button and 
+check that a message box containing the instructions is displayed.
+
+\item{FR-UI5\\}
+
+Type: Functional, Manual, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: The statistics button is pressed.
+
+Output: A message box is displayed containing all of the player statistics.
+
+How test will be performed: A tester will click on the statistics button and 
+check that a message box containing the player statistics is displayed.
+
+\item{FR-UI6\\}
+
+Type: Functional, Manual, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: An end game event.
+
+Output: A message box is displayed containing the number of games played.
+
+How test will be performed: A tester will do a playthrough of the game. At the 
+end they will check that a message box containing the total number of games is 
+displayed.
+
+\item{FR-UI7\\}
+
+Type: Functional, Manual, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: An end game event.
+
+Output: A message box is displayed containing the win/loss ratio.
+
+How test will be performed: A tester will do a playthrough of the game. At the 
+end, they will check that a message box containing the player's win/loss ratio 
+is 
+displayed.
+
+\item{FR-UI8\\}
+
+Type: Functional, Manual, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: An end game event.
+
+Output: A message box is displayed containing the current streak of correct 
+guesses.
+
+How test will be performed: A tester will do a playthrough of the game. At the 
+end, they will check that a message box containing the player's current streak 
+of correct guesses is displayed.
+
+\item{FR-UI9\\}
+
+Type: Functional, Manual, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: An end game event.
+
+Output: A message box is displayed containing the best streak of correct 
+guesses.
+
+How test will be performed: A tester will do a playthrough of the game. At the 
+end they will check that a message box containing the player's best streak 
+of correct guesses is displayed.
+
+\item{FR-UI10\\}
+
+Type: Functional, Manual, Dynamic
+
+Initial State: A web browser with the Wordle 2.0 game loaded.
+
+Input: An end game event.
+
+Output: A message box is displayed, which contains the player's guess 
+distribution.
+
+How test will be performed: A tester will do a playthrough of the game. At the 
+end, they will check if a message box containing the player's guess 
+distribution is displayed.
+
+\end{enumerate}
+\subsubsection{Gameplay Tests}
+\begin{enumerate}
+\item{FR-GP1\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester clicks the share option.
+
+Output: The clipboard stores a copy of the results.
+
+How test will be performed: A tester will play the game and at the end of the 
+game, will click the share option, paste the results into a word document and 
+check whether the desired image has been pasted.
+
+\item{FR-GP2\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters a word.
+
+Output: The gameboard allows the user to enter the word.
+
+How test will be performed: A tester will play the game and enter a 5-letter 
+word and hit submit. The tester will observe if the gameboard accepts the word 
+or not.
+
+\item{FR-GP3\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters a word with a letter in the correct spot.
+
+Output: The gameboard highlights the correct letter tile in green.
+
+How test will be performed: A tester will play the game and enter a 5-letter 
+word with one letter in the correct spot and will observe whether or not the 
+gameboard 
+highlights that tile in green.
+
+\item{FR-GP4\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters a word with a letter in the correct spot.
+
+Output: The gameboard highlights the correct letter tile in green.
+
+How test will be performed: A tester will play the game and enter a 5-letter 
+word with one letter in the correct spot and observes whether the gameboard 
+highlights that tile in green.
+
+\item{FR-GP5\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters a word with a letter in the wrong spot.
+
+Output: The gameboard does not highlight the letter tile.
+
+How test will be performed: A tester will play the game and enter a 5-letter 
+word with letters in the wrong spot and observes whether the gameboard does not 
+highlight that tile.
+
+\item{FR-GP6\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters an invalid 5-letter word.
+
+Output: The game alerts the user about the invalid word.
+
+How test will be performed: A tester will play the game and enter an invalid 
+word. The game should alert the user about this.
+
+\item{FR-GP7\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters an invalid word with less than 5 letters.
+
+Output: The game alerts the user about the invalid word.
+
+How test will be performed: A tester will play the game and enter an invalid 
+word with less than 5 letters. The game should alert the user about this.
+
+\item{FR-GP8\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters a word with some correct letters.
+
+Output: The game keyboard updates itself to reflect the accuracy of the new 
+guess.
+
+How test will be performed: A tester will play the game and enter a word. The 
+keyboard will update itself to reflect the letters which were within the word 
+and those that were not.
+
+\item{FR-GP9\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester enters a word and tries to modify that word after submission.
+
+Output: The game does not allow any modifications after submission.
+
+How test will be performed: A tester will play the game, enter a word and try 
+to modify that word after submission, however, the game must ensure that this 
+does not happen.
+
+\item{FR-GP10\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester sees an option to change the game word length setting.
+
+Output: The game provides the user option to change the word length.
+
+How test will be performed: A tester will see the option to change word length 
+in the game and the game allows them to alternate between different modes.
+
+\item{FR-GP11\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester clicks the change word-length button.
+
+Output: The game changes the word length setting according to player inputs.
+
+How test will be performed: A tester will change the game length and enter 
+words of corresponding lengths to ensure that the game functions as desired in 
+all settings.
+
+\item{FR-GP12\\}
+
+Type: Functional, Manual
+
+Initial State: The Wordle 2.0 site has been initialized.
+
+Input: Tester clicks the reset button.
+
+Output: The game resets for another round of play.
+
+How test will be performed: A tester will click the reset button and the game 
+should allow them to play another round with a new word.
+
+\end{enumerate}
+
+
+
+\subsection{Tests for Nonfunctional Requirements}
+
+\subsubsection{Look and Feel Testing}
+
+\begin{enumerate}
+
+\item{NFR-LF1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game loaded with no guesses inputed. 
+					
+Input: \textbf{Tester} plays the game by guessing words.
+					
+Output: Survey results
+					
+How test will be performed: The responses of the \textbf{testers} 
+to question 2 and 3 of the Usability Survey will determine the 
+ease of use and understandability of the game. 
+
+					
+\item{NFR-LF2\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game loaded with no guesses made. 
+					
+Input: \textbf{Tester} plays the game by guessing words.
+					
+Output: Survey results
+					
+How test will be performed: \textbf{Testers} will play the 
+game and the original \textbf{Wordle 2.0} and answer questions 1 and 4 from the 
+Usability Survey.
+
+\end{enumerate}
+
+\subsubsection{Usability and Humanity Testing}
+
+\begin{enumerate}
+
+\item{NRF-UH1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game loaded with no guesses made. 
+					
+Input: \textbf{Tester} plays the game by guessing words.
+					
+Output: Survey results
+					
+How test will be performed: Children at or above the age of $\hypertarget{min_age}{MIN\_AGE}$ 
+will play the game and fill out a survey that evaluates their understanding.
+
+\item{NRF-UH2\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game loaded with no guesses made. 
+					
+Input: \textbf{Tester} plays the game by guessing words.
+					
+Output: Survey results
+					
+How test will be performed: \textbf{Testers} will play the 
+game and will fill out a survey that evaluates how easy they 
+found the game to be playable with one hand
+
+\item{NRF-UH4\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Game loaded with no guesses made. 
+					
+Input: \textbf{Tester} plays the game by guessing words.
+					
+Output: Survey Results
+					
+How test will be performed: The responses of the \textbf{testers} 
+to question 5 of the Usability Survey will determine the difficulty of the game. 
+
+\end{enumerate}
+
+\subsubsection{Performance Testing}
+
+\begin{enumerate}
+
+\item{NRF-P1\\}
+
+Type: Functional, Automatic
+					
+Initial State: Game loaded with no guesses made. 
+					
+Input: A guess will be inputted.
+					
+Output: Survey Results
+					
+How test will be performed: An automated unit test will check the time it takes for the 
+page elements to be added to the element tree and be displayed. It must be less than
+$\hypertarget{min_time}{MIN\_TIME}$, over multiple executions and varying devices.
+
+\item{NRF-P2\\}
+
+Type: Functional, Automatic
+					
+Initial State: Game is to be initialized. 
+					
+Input: The site will be reloaded
+					
+Output: Survey Results
+					
+How test will be performed: An automated unit test will reload the page to check the time it takes for the 
+page elements to be loaded to the element tree and be displayed. It must be less than
+$\hypertarget{min_time}{MIN\_TIME}$, over multiple executions and varying devices.
+
+
+\end{enumerate}
+
+
+\subsection{Traceability Between Test Cases and Requirements}
+
+\begin{landscape}
+
+\begin{table}[H]
+	% \begin{center} 
+		\caption{\textbf{Traceability Matrix for UI Requirements}} 
+		\label{trace2}
+		\begin{tabularx}{\textwidth}{cc|c|c|c|c|c|c|c|c|c|c|c}
+			\cline{3-12}
+			& & \multicolumn{10}{c|}{Requirements} \\ \cline{3-12}
+			& & FR1 & FR2 & FR3 & FR4 & FR5 & FR6 & FR7 & FR8 & FR9 & 
+			FR10  \\ \cline{1-12}
+			\multicolumn{1}{|c|}{\multirow{10}{*}{Test Cases} } &
+			\multicolumn{1}{|c|} {FR-UI1} &X&&&&&&&&&&\\ \cline{2-12}
+			\multicolumn{1}{|c|}{} 	                  &
+			\multicolumn{1}{|c|}{FR-UI2} &&X&&&&&&&& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI3} &&&X&&&&&&& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI4} &&&&X&&&&&& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI5} &&&&&X&&&&& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI6} &&&&&&X&&&& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI7} &&&&&&&X&&& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI8} &&&&&&&&X&& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI9} &&&&&&&&&X& \\ \cline{2-12}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-UI10} &&&&&&&&&&X \\ \cline{1-12}
+			
+		\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+	% \begin{center} 
+		\caption{\textbf{Traceability Matrix for Gameplay Requirements}} 
+		\label{trace2}
+		\begin{tabularx}{\textwidth}{cc|c|c|c|c|c|c|c|c|c|c|c|c|c}
+			\cline{3-14}
+			& & \multicolumn{12}{c|}{Requirements} \\ \cline{3-14}
+			& & FR11 & FR12 & FR13 & FR14 & FR15 & FR16 & FR17 & FR18 & FR19 & 
+			FR20 & FR21 & FR22  \\ \cline{1-14}
+			\multicolumn{1}{|c|}{\multirow{10}{*}{Test Cases} } &
+			\multicolumn{1}{|c|} {FR-GP1} &X&&&&&&&&&&&&\\ \cline{2-14}
+			\multicolumn{1}{|c|}{} 	                  &
+			\multicolumn{1}{|c|}{FR-GP2} &&X&&&&&&&&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP3} &&&X&&&&&&&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP4} &&&&X&&&&&&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP5} &&&&&X&&&&&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP6} &&&&&&X&&&&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP7} &&&&&&&X&&&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP8} &&&&&&&&X&&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP9} &&&&&&&&&X&&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP10} &&&&&&&&&&X&& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP11} &&&&&&&&&&&X& \\ \cline{2-14}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {FR-GP12} &&&&&&&&&&&&X \\ \cline{1-14}
+		\end{tabularx}
+	\end{table}
+
+\begin{table}[H]
+	% \begin{center} 
+		\caption{\textbf{Traceability Matrix for Non Functional Requirements}} 
+		\label{trace2}
+		\begin{tabularx}{\textwidth}{cc|c|c|c|c|c|c|c|c}
+			\cline{3-9}
+			& & \multicolumn{7}{c|}{Requirements} \\ \cline{3-9}
+			& & LF1 & LF2 & UH1 & UH2 & UH4 & P1 & P2  \\ 
+			\cline{1-9}
+			\multicolumn{1}{|c|}{\multirow{10}{*}{Test Cases} } &
+			\multicolumn{1}{|c|} {NFR-LF1} &X&&&&&&\\ \cline{2-9}
+			\multicolumn{1}{|c|}{} 	                  &
+			\multicolumn{1}{|c|}{NFR-LF2} &&X&&&&& \\ \cline{2-9}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {NFR-UH1} &&&X&&&&\\ \cline{2-9}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {NFR-UH2} &&&&X&&& \\ \cline{2-9}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {NFR-UH4} &&&&&X&& \\ \cline{2-9}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {NFR-P1} &&&&&&X& \\ \cline{2-9}
+			\multicolumn{1}{|c|}{}                        &
+			\multicolumn{1}{|c|} {NFR-P2} &&&&&&&X \\ \cline{1-9}
+
+		\end{tabularx}
+	\end{table}
+
+
+\end{landscape}
+
+
+
+
+\section{Tests for Proof of Concept}
+
+\subsection{Gameplay Testing}
+
+\begin{enumerate}
+
+\item{POC-GP-1}
+
+Type: Functional, Manual
+					
+Initial State: Initialization of the Wordle board and keyboard
+					
+Input: The webpage is reloaded
+					
+Output: A blank board and default coloured keyboard are displayed.
+					
+How test will be performed: The tester will load a new game and check that the 
+game's guess board and on screen keyboard appear.
+					
+\item{POC-GP-2}
+
+Type: Functional, Manual
+					
+Initial State: Game should be initialized
+					
+Input: \textbf{Tester} submits a word with less than 5 letters.
+					
+Output: Player is alerted the word is too short.
+					
+How test will be performed: The \textbf{tester} submits a word with less than 5 letters,
+and checks to see if they are alerted in response. 
+
+\item{POC-GP-3}
+
+Type: Functional, Manual
+					
+Initial State: Game should be initialized
+					
+Input: \textbf{Tester} submits a fake word.
+					
+Output: Player is alerted the word is invalid.
+					
+How test will be performed: The \textbf{tester} submits a gibberish word,
+and checks to see if they are alerted in response. 
+
+\item{POC-GP-4}
+
+Type: Functional, Manual
+					
+Initial State: Game should be initialized
+					
+Input: \textbf{Tester} guesses various word.
+					
+Output: The game board and on-screen keyboard updates.
+					
+How test will be performed: The \textbf{tester} submits various words, 
+through both input methods, and checks to see if the game board 
+and on-screen keyboard updates with the appropriate colours. 
+
+\item{POC-GP-5}
+
+Type: Functional, Manual
+					
+Initial State: Game should be initialized
+					
+Input: The target word is submitted.
+					
+Output: The game no longer accepts any new guesses.
+					
+How test will be performed: The test automatically guesses the target word, 
+then a \textbf{tester} checks both the physical and on-screen keyboards.  
+
+\item{POC-GP-6}
+
+Type: Functional, Manual
+					
+Initial State: Game should be initialized
+					
+Input: The dark mode switch is clicked.
+					
+Output: The game switches themes.
+					
+How test will be performed: The \textbf{tester} clicks the dark mode switch,
+and checks to see if all the elements switch to their dark mode colours. The tester
+should click the switch again to ensure it can go both ways.
+
+\end{enumerate}
+
+	
+\section{Comparison to Existing Implementation}	
+At the time of writing this document, Wordle and Wordle 2.0 both have mirrored 
+core functionality as both provide an interface to input 5-letter words and 
+give information on the accuracy of the input letters. Things that remain to be 
+implemented are additional menu options for player statistics, dynamic word 
+levels and improved graphics.
+\section{Unit Testing Plan}
+		
+\subsection{Unit testing of internal functions}
+We will be using Mocha and the built-in assertion library provided by Node.js 
+to 
+test internal functions. We will write a test file consisting of different 
+functions that correspond to tests for each module. We will be using assertion 
+statements, which take predetermined parameters and compares the method output 
+with the expected output. If the assertion statement evaluates to true, we can 
+say that this test has passed successfully and is correct for this case. To 
+ensure coverage of the input domain, we will choose extreme/boundary values as 
+our predetermined parameters. The Selenium suite will be used also be used to 
+test internal functions that can not be tested using Mocha. We will be using a 
+page object design pattern for our tests. Selenium will be used to get HTML 
+elements from the game and pass inputs to them. Assert statements will then be 
+used to compare the system output with the expected output. This may be in the 
+form of locating new elements on the game page etc. It is expected that unit 
+testing will be able to cover 
+$\hypertarget{unit_testing_coverage}{UNIT\_TEST\_COVERAGE}$ percent of the 
+code. The rest of the code will be verified using manual testing.
+		
+\subsection{Unit testing of output files}		
+There are no output files created from \textbf{Wordle 2.0}, 
+therefore there are no unit tests for this section.	
+
+\newpage
+
+\section{Appendix}
+
+\subsection{Symbolic Parameters}
+
+$\hypertarget{min_age}{MIN\_AGE}$ = 10\\
+$\hypertarget{min_time}{MIN\_TIME}$ = 0.25\\
+$\hypertarget{unit_testing_coverage}{UNIT\_TEST\_COVERAGE}$ = 40\\
+\subsection{Usability Survey Questions?}
+
+
+Tester feedback is an important component of testing and their experience playing Wordle should be taken into account. The following are some survey questions we could ask:
+\begin{enumerate}
+    \item How would you compare your experience playing Wordle 2.0 to the official version of Wordle?
+    \item On a scale from 1-10, how intuitive were the controls?
+    \item On a scale from 1-10, how easy was it to enter inputs within the game?
+    \item Would you consider the UI to be visually appealing?
+    \item How long did it take you to figure out the instructions on how to play this game?
+\end{enumerate}
+
+\end{document}

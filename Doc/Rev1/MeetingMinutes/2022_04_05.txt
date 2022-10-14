@@ -1,0 +1,4 @@
+Meeting Minutes Tues Apr 5, 2022
+Topics Discussed: Code regarding wordle, Final Demo
+
+Final demo was rehearsed. Application was tested to ensure proper functionality. Further automated tests were discussed.

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Wordle 2.0</title>
+    <!-- Attaches the nessessay CSS and JS files. -->
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="main.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>JavaScript Modules</title>
+</head>
+
+<body>
+    <!-- Contains all the button/slider UI elements
+    at the top of the page -->
+    <!-- UI for toggling dark mode -->
+    <label class="switch" style="float: right;">
+        <input id="Theme" type="checkbox" checked>
+        <span class="slider"></span>
+    <!-- UI for opening instructions modal window. -->
+    </label><button id="infobar" class="btn">INFO</button>
+    <!-- UI for switching between the gameplay modes. -->
+    </label><button id="four" class="btn">FOUR</button>
+    </label><button id="five" class="btn">FIVE</button>
+    </label><button id="six" class="btn">SIX</button>
+    <!-- UI for for sharing game results. -->
+    </label><button id="share" class="btn">SHARE</button>
+    <!-- UI for opening statistics modal window. -->
+    <button class="stats-btn"> STATS</button>
+    <!-- Containers for visual representation of the game data. -->
+    <div class="game-container">
+        <div class="title-container">
+            <h1 id="solution">Wordle 2.0</h1>
+        </div>
+        <!-- Holds the visuals for the game board. -->
+        <div class="tile-container" id="Tile"></div>
+        <!-- Holds the visuals for the on screen keyboard.-->
+        <div class="key-container"></div>
+    </div>
+
+    <!-- All of the game's instructions information. -->
+    <div class="modal">
+        <div class="modal-style">
+            <span class="close">&times;</span>
+            <h1>How to play</h1>
+            <div id="infocontent">
+                <p>Your objective is to input letters corresponding to the number of columns available in the game board
+                    and hit
+                    submit.</p>
+                <p>You can only submit valid words and after each guess, the color of the tiles will change to show how
+                    close your guess was to the word.</p>
+                <div class="info-container">
+                    <div class="itile" style="background-color:#22c55d;">W</div>
+                    <div class="itile">E</div>
+                    <div class="itile">A</div>
+                    <div class="itile">R</div>
+                    <div class="itile">Y</div>
+                </div>
+                <p>The letter W is the word and in the correct spot.</p>
+                <div class="info-container">
+                    <div class="itile">P</div>
+                    <div class="itile">I</div>
+                    <div class="itile" style="background-color:orange;">L</div>
+                    <div class="itile">O</div>
+                    <div class="itile">T</div>
+                </div>
+                <p>The letter L is in the word but in the wrong spot.</p>
+                <div class="info-container">
+                    <div class="itile">V</div>
+                    <div class="itile">A</div>
+                    <div class="itile">G</div>
+                    <div class="itile" style="background-color:#787c7e;">U</div>
+                    <div class="itile">E</div>
+                </div>
+                <p>The letter U is not in the word in any spot.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visual elemetents for the statistics data. -->
+    <div class="stats-modal-bg">
+        <div class="stats-modal">
+            <h2>Statistics</h2>
+            <p class="current-streak"></p>
+            <p class="best-streak"></p>
+            <p class="success"></p>
+            <p class="games-played"></p>
+            <h3>Guess Distribution</h3>
+            <div class="distribution">
+                <div id="chart_div"></div>
+            </div>
+            <span class="stats-modal-close">&times;</span>
+        </div>
+    </div>
+
+    <!-- Visual elemetents for the player alert messages. -->
+    <div class="alerts-modal">
+        <p id="message"></p>
+    </div>
+
+</body>

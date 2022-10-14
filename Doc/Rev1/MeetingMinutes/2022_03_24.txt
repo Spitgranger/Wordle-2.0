@@ -1,0 +1,4 @@
+Meeting Minutes Thurs Mar 24, 2022
+Topics Discussed: Code regarding wordle
+
+Implementation of word lengths and share were discussed. Team decided to go with 4 and 6 letter word modes

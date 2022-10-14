@@ -1,0 +1,1133 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+\setcounter{secnumdepth}{0}
+
+\usepackage{color}
+
+\title{SE 3XA3: Module Interface Specification\\ Wordle 2.0}
+
+\author{Team 8,
+	\\ Richard Fan, fanr13
+	\\ Noel Zacharia, zacharin
+	\\ Biranugan Pirabaharan, pirabahb
+}
+\date{\today}
+
+\begin {document}
+ 
+\maketitle
+\newpage
+\tableofcontents
+\listoftables
+\listoffigures
+
+\newpage
+\begin{table}[h]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+March 14, 2022 & 0.1 & Initial Document\\
+March 15, 2022 & 0.2 & Added modules 1-8\\
+March 16, 2022 & 0.3 & Added module 9-14\\
+March 18, 2022 & 0.4 & Finished MIS for all modules\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\section {main Module}
+
+\subsection* {main Module}
+
+\subsection* {Uses}
+
+Create Gameboard, darkmode, Stats, Stats View, alert, Style, Index, Keyboard, click, Instructions, share
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+~ & ~ & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+
+gameState : Boolean \\
+currentRow : Integer \\
+currentTile : Integer
+
+\subsubsection* {State Invariant}
+
+$currentRow >= 0 \wedge currentTile >= 0$
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+N/A
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Stats View Module}
+
+\subsection* {Stats View Module}
+
+\subsection* {Uses}
+
+Stats, Google Visualization API
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+statsModal & ~ & ~ &  \\
+\hline
+closeStatsModal & ~ & ~ & \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen, Mouse
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+\begin{itemize}
+\item closeStatsModal() is only called after statsModal()
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent statsModal():
+\begin{itemize}
+  \item transition-output: The user's current statistics are displayed along with a graph of their guess distribution.
+\end{itemize}
+
+\noindent closeStatsModal():
+\begin{itemize}
+\item transition: Removes the displayed statistics window
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+drawBasic(): Displays a bar chart using given data, using the Google API.
+
+\newpage
+
+\section {Stats Module}
+
+\subsection* {Stats Module}
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+stats = Object of State Variables
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+setStats & int & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+N/A
+
+\subsubsection* {State Variables}
+
+winDistribution: seq of Integer\\
+gamesFailed: Integer\\
+currentStreak: Integer\\
+bestStreak: Integer\\
+totalGames: Integer\\
+successRate: Integer
+
+\subsubsection* {State Invariant}
+
+$gamesFailed >= 0 \wedge currentStreak >= 0 \wedge bestStreak >= 0 \wedge totalGames >= 0 \wedge successRate >= 0  $
+
+\subsubsection* {Assumptions}
+
+setStats is called when user's game is completed
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent setStats(count):
+\begin{itemize}
+  \item transition: Updates the user's statistics based on their number of guesses needed; count.
+  \item exception: New user's are given default statistics set to zero.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+getSuccessRate(): Returns a percentage of games won.
+
+
+\newpage
+
+\section {Style Module}
+
+\subsection* {Style Module}
+
+\subsection* {Uses}
+
+Index
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+styleElements & ~ & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent styleElements():
+\begin{itemize}
+  \item transition: Updates the style properties of the elements on the web page.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Update Gameboard Module}
+
+\subsection* {Update Gameboard Module}
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+addLetter & char, int[][], int, int & ~ &  \\
+\hline
+removeLetter & int[][], int, int & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen, Mouse, Keyboard
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent addLetter(letter, gameboard, currentTile, currentRow):
+\begin{itemize}
+  \item transition: Add a letter to the gameboard in the correct position when the user clicks/types a letter. 
+ \item exception: Does nothing if the guess already has 5 letters.
+\end{itemize}
+
+\noindent deleteLetter(gameboard, currentTile, currentRow):
+\begin{itemize}
+  \item transition: Deletes a letter from the gameboard at the correct position when the user clicks/types the delete key. 
+  \item exception: Does nothing if no letters are present.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Keyboard Colours Module}
+
+\subsection* {Keyboard Colours Module}
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+updateKeyColorGreen & char & ~ &  \\
+\hline
+updateKeyColorYellow & char & ~ &  \\
+\hline
+updateKeyColorGray & char & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent updateKeyColorGreen(letter):
+\begin{itemize}
+  \item transition: Updates the color of the given letter for the on-screen keyboard to green.
+\end{itemize}
+
+\noindent updateKeyColorYellow(letter):
+\begin{itemize}
+  \item transition: Updates the color of the given letter for the on-screen keyboard to yellow, if it is not green.
+\end{itemize}
+
+\noindent updateKeyColorGray(letter):
+\begin{itemize}
+  \item transition: Updates the color of the given letter for the on-screen keyboard to gray, if it is not green or yellow.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Alert Module}
+
+\subsection* {Alert Module}
+
+\subsection* {Uses}
+
+wordOperations
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+message & string & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent message(situation):
+\begin{itemize}
+  \item transition: Displays an alert message to the user depending on the situation: if the guess is too short, guess is invalid or if the player failed to guess the word.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {share Module}
+
+\subsection* {share Module}
+
+\subsection* {Uses}
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+share & int[][] & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen, Mouse
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+share is called when user's game is completed
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent message(situation):
+\begin{itemize}
+  \item transition-output: Copies the gameboard's final state, specifically the color of the tiles, as emojis to the user's clipboard. 
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+
+\newpage
+
+\section {Valid Guess Module}
+
+\subsection* {Valid Guess Module}
+
+\subsection* {Uses}
+
+Constants
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+isWordInWordList & String & Boolean &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+N/A
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent isWordInWordList(word):
+\begin{itemize}
+  \item transition: Returns a true if a word is present in the word lists, else returns false.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Constants Module}
+
+\subsection* {Constants Module}
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+Rows, Keys, Valid, Words
+
+\subsubsection* {Exported Access Programs}
+
+None
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+N/A
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+N/A
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Create Gameboard Module}
+
+\subsection* {Create Gameboard Module}
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+createGameBoard & int[][] & ~ &  \\
+\hline
+\end{tabular}
+
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent createGameBoard(rows):
+\begin{itemize}
+  \item output: Creates the game board depending upon the number of rows needed.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {darkmode Module}
+
+\subsection* {darkmode Module}
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+darkmode & ~ & ~ &  \\
+\hline
+\end{tabular}
+
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen, Mouse
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent darkmode():
+\begin{itemize}
+  \item transition: Changes the UI theme from light mode to dark mode and vice-versa.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Keyboard Module}
+
+\subsection* {Keyboard Module}
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+keyboard & list & ~ &  \\
+\hline
+\end{tabular}
+
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent keyboard(keys):
+\begin{itemize}
+  \item transition: Creates the on-screen keyboard containing all the letters, delete key and enter key.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Index Module}
+
+\subsection* {Index Module}
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+HTML components & ~ & ~ &  \\
+\hline
+\end{tabular}
+
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+None
+
+\subsubsection*{Local Function:}
+
+N/A
+
+
+\newpage
+
+\section {Click Module}
+
+\subsection* {Click Module}
+
+\subsection* {Uses}
+
+Valid Guess, Tile Colours, Keyboard Colours, Update Gameboard, Word Operations
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+clicked & String, Boolean, int, int, int[][], char[] & ~ &  \\
+\hline
+\end{tabular}
+
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Keyboard, Mouse
+
+\subsubsection* {State Variables}
+N/A
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent clicked(letter, gameState, currentTile, currentRow, ROWS, solutionArray):
+\begin{itemize}
+  \item transition: Handles processing the user inputs and calling other functions to ensure the game is playable.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Instructions Module}
+
+\subsection* {Instructions Module}
+
+\subsection* {Uses}
+
+None
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+instructions & ~ & ~ &  \\
+\hline
+\end{tabular}
+
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Sceen, Mouse
+
+\subsubsection* {State Variables}
+InfoText
+
+\subsubsection* {State Invariant}
+
+N/A
+
+\subsubsection* {Assumptions}
+
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent instructions():
+\begin{itemize}
+  \item transition: Will display instructions on how to play Wordle whenever called.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage
+
+\section {Tile Colours Module}
+
+\subsection* {Tile Colours Module}
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+updateColorGreen & int, int & ~ &  \\
+\hline
+updateColorYellow & int, int & ~ &  \\
+\hline
+updateColorGray & int, int & ~ &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+
+Screen
+
+\subsubsection* {State Variables}
+N/A
+\subsubsection* {State Invariant}
+N/A
+\subsubsection* {Assumptions}
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent updateColorGreen(currentTile, currentRow):
+\begin{itemize}
+  \item transition: Updates the color of the given tile in the given row to green.
+\end{itemize}
+
+\noindent updateColorYellow(currentTile, currentRow):
+\begin{itemize}
+  \item transition: Updates the color of the given tile in the given row to yellow.
+\end{itemize}
+
+\noindent updateColorGray(currentTile, currentRow):
+\begin{itemize}
+  \item transition: Updates the color of the given tile in the given row to gray.
+\end{itemize}
+\subsubsection*{Local Function:}
+
+N/A
+
+\newpage 
+
+\section {Word Operations Module}
+
+\subsection* {Word Operations Module}
+
+\subsection* {Uses}
+
+Math, Constants.Words, String.prototype
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Constants}
+
+int index = Math.floor(Math.random() * 2316)
+\newline
+string solution = Constants.Words[index].toUpperCase()
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{6cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+isCorrectWord & string, string & Boolean &  \\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsection*{Environment Variables}
+N/A
+
+
+\subsubsection* {State Variables}
+N/A
+\subsubsection* {State Invariant}
+N/A
+\subsubsection* {Assumptions}
+N/A
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent isCorrectWord(word, solution):
+\begin{itemize}
+  \item output: returns true if word is equal to solution, false otherwise.
+\end{itemize}
+
+\subsubsection*{Local Function:}
+
+N/A
+
+\end {document}

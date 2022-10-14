@@ -1,0 +1,11 @@
+Meeting Minutes Friday Feb 25, 2022
+Topics Discussed: Progress of the proof of concept demo
+
+The team discussed their progress on the proof of concept demo and highlighed issues and remaining work that still needed 
+to be accomplished. The team has decided to meet again on Tuesday to discuss the final touches needed for the POC. 
+Some Issues identified:
+-Repeat words will still be coloured even if they are not in the word
+-No prompt is given if the player loses the game
+
+
+They also discussed partitioning work for the next deliverable, the test plan. 

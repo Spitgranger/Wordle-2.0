@@ -1,0 +1,291 @@
+/* Contains all the styling information for the visual elements of the HTML page */
+
+:root {
+  --green: #22c55d;
+  --gray: #787c7e;
+  --yellow: orange;
+  --keyW: #e2e8f0;
+  --keyD: #475569;
+}
+
+body {
+  color: #000;
+  font-family: 'Lucida Console', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+.game-container {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-container {
+  text-align: center;
+  width: 625px;
+}
+
+.tile-container {
+  width: 330px;
+  margin-bottom: 30px;
+}
+
+.tile-container div {
+  display: flex;
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-container .itile {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #475569;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+}
+
+.tile-container .tile {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #475569;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+}
+
+.key-container {
+  width: 520px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keys {
+  width: 43px;
+  height: 58px;
+  border-radius: 7px;
+  border: none;
+  background-color: #e2e8f0;
+  margin: 4px;
+  font-weight: bold;
+}
+
+.keysDark {
+  background-color: var(--keyD);
+}
+
+
+.key-container button:nth-child(11) {
+  margin-left: 30px;
+}
+
+.key-container button:nth-child(20),
+.key-container button:nth-child(28) {
+  width: 70px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 58px;
+  height: 33px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(194, 192, 192);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+input:checked+.slider {
+  background-color: #218de6;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2292ee;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(25px);
+  -ms-transform: translateX(25px);
+  transform: translateX(25px);
+}
+
+.btn,
+.stats-btn {
+  background-color: #2292ee;
+  border: none;
+  color: white;
+  padding: 13px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #2292ee;
+}
+
+.stats-modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.alerts-modal {
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: #FF6180;
+  padding: 0 10px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.alerts-modal p {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.stats-modal {
+  position: fixed;
+  overflow: auto;
+  background-color: #2292ee;
+  width: 50%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stats-modal p {
+  margin: 0;
+}
+
+.stats-modal h3 {
+  margin-bottom: 0;
+}
+
+.distribution {
+  width: 80%;
+}
+
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.modal-style {
+  position: fixed;
+  overflow: auto;
+  background-color: #2292ee;
+  width: 60%;
+  height: 80%;
+  display: flex;
+  margin: 10%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#infocontent {
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.stats-modal-close,
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ffffff;
+  font-size: 29px;
+  float: right;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus,
+.stats-modal-close:hover,
+.stats-modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  height: 30%;
+}
+
+.modal-active {
+  visibility: visible;
+  opacity: 1;
+}

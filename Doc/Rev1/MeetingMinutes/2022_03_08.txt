@@ -1,0 +1,4 @@
+Meeting Minutes Thurs Mar 8, 2022
+Topics Discussed: Test Plan Progress, Design Documentation Work
+
+Progress regarding the test plan was discussed. The team completed the test plan and has started work on the design documents. The work will be split between all three team members equally.

@@ -1,0 +1,296 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[numbers]{natbib}
+
+\title{SE 3XA3: Software Requirements Specification\\Wordle 2.0}
+
+\author{Team 8, Goufs
+		\\ Richard Fan, fanr13
+		\\ Noel Zacharia, zacharin
+		\\ Biranugan Pirabaharan, pirabahb
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+Feb 7, 2022  & 1.0 & Initial Document\\
+Date 2 & 1.1 & Notes\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+This document describes the requirements for the game Wordle 2.0. The template 
+for this Software Requirements Specification is a subset of the Volere 
+template[1].
+
+
+\section{Project Drivers}
+
+\subsection{The Purpose of the Project}
+The purpose of this project is to recreate the functionality of the web game Wordle. Additionally we aim to modernize the UI and add new features such as a dark mode and more levels.
+\subsection{The Stakeholders}
+
+\subsubsection{The Client}
+The client is the professor for this course, Dr. Asghar Bokahri, and the 
+teaching assistants, Veerash Palanichamy, Oluwaseun Owojaiye, and Abdul Rab 
+Mohammed. The clients will provide us with deadlines on deliverables, and will 
+have the final decision on the project's acceptance and adherance to the SRS. 
+
+\subsubsection{The Customers}
+In this case, the customers are all people who will play the Wordle 2.0 game. 
+This game targets people of a demographics and will have minimal hardware 
+requirements to decrease the barriers to access.
+
+\subsubsection{Other Stakeholders}
+The developers of this project are also stakeholders. Without them, there would 
+be no Wordle 2.0. The skills of individual team members, both technical and 
+soft skills, will be put to use in order to complete this project. They will be 
+responsible for implementation, documentation, and testing of the product. 
+Additionally, the original developers and contributors to the Wordle Clone 
+respository will be stakeholders in this project as they are constantly 
+updating the respository and wish to improve the game.
+
+\subsection{Mandated Constraints}
+\subsubsection{Solution Constraints}
+\noindent \textbf{Description:} Wordle must be able to run on any modern browser or laptop.\\
+\textbf{Rationale:} The potential users of Wordle will need to have the listed browsers. \\
+\textbf{Fit Criterion:} Wordle will run on any latest version of node.
+
+\subsubsection{Implementation Environment of the Current System}
+\noindent \emph{N/A}
+
+\subsubsection{Partner or Collaborative Applications}
+\noindent \emph{N/A}
+
+\subsubsection{Off-the-Shelf Software}
+\noindent \emph{N/A}
+
+\subsubsection{Anticipated Workplace Environment}
+\noindent \emph{N/A}
+
+\subsubsection{Schedule Constraints}
+\noindent \textbf{Description:} The Project must follow the project schedule shown in the Development Plan\\
+\textbf{Rationale:} The Project needs to follow a predefined plan in order to ensure the completion of the milestones by their respective due dates. \\
+\textbf{Fit Criterion:} The Project will be completed with all milestones submitted on time. 
+
+\subsubsection{Budget Constraints}
+\noindent \emph{N/A}
+
+\newpage
+\subsection{Naming Conventions and Terminology}
+\begin{table}[h!]
+\caption{Naming Conventions and Terminology}
+\begin{tabular}{ |p{6cm}|p{8cm}|  }
+	\hline
+	\multicolumn{2}{|c|}{Naming Conventions and Terminology} \\
+	\hline
+	\textbf{Term} & \textbf{Definition}\\
+	\hline
+	JavaScript(JS) & The programming language used in this project.  \\
+	\hline
+	Player/User & The individual playing the game.   \\
+	\hline
+	TypeScript & The programming language used in Not Wordle.  \\
+	\hline
+	System    & The software behind the game.  \\
+	\hline 
+	SRS & Acronym meaning Software Requirments Specification. This document 
+	describes what the software system is to do and it's expected 
+	performance.   \\
+	\hline
+	Web Browser & The platform on which the game will run. \\
+	\hline
+	User Interface & The point at which the user interacts with the 
+	system.  \\
+	\hline
+	React & The JS library that is used for building the user interface.  \\
+	\hline
+\end{tabular}
+\end{table}
+
+\subsection{Relevant Facts and Assumptions}
+
+User characteristics should go under assumptions.
+
+\section{Functional Requirements}
+
+\subsection{The Scope of the Work and the Product}
+
+\subsubsection{The Context of the Work}
+Wordle 2.0 is a standalone application that doesn't interact with other folders or systems. It is meant to be played by one person at a time.
+\newpage
+\subsubsection{Work Partitioning}
+
+\begin{table}[h!]
+	\caption{Work Partitioning Events}
+	\centering
+	\begin{tabular}{|c|p{3.5cm}|c|p{3.5cm}|}
+		\hline
+		\textbf{Event Number} & \centering\textbf{Event Name} & \textbf{Input} 
+		& \textbf{Output} \\
+		\hline
+		1 & Starting a new game & Mouse & Final Score \\
+		\hline
+		2 & Reading the instructions & Mouse & Instructions shown \\
+		\hline
+		3 & Opening the settings menu & Mouse & Settings shown \\
+		\hline
+		4 & Letter Placement & Keyboard/Mouse & Letter is placed on the 
+		guessbox. \\
+		\hline
+		5 & Viewing about & Mouse & About \\
+		\hline
+		6 & Game over & Mouse/Keyboard & Game ends \\
+		\hline
+	\end{tabular}
+\end{table}
+\begin{table}[h]
+	\caption{Work Partitioning Summaries}
+	\centering
+	\begin{tabular}{|c|p{11cm}|}
+		\hline
+		\textbf{Event Number} & \textbf{Summary} \\
+		\hline
+		1 & The user will use the mouse to start a 
+		new game. When the game ends, the user will see the hidden word 
+		and a summary of their guesses. \\
+		\hline
+		2 & The user using the mouse, decides to read the instructions of 
+		Wordle 2.0. \\
+		\hline
+		3 & During the game, the user can use the mouse to open the settings 
+		menu. \\
+		\hline
+		4 & During the game, the user can use mouse input to place letters to 
+		the guessbox. \\
+		\hline
+		5 &  The user, through mouse input, views the about page.\\
+		\hline
+		6 & The user, through a series of mouse/keyboard inputs, finishes the 
+		game, displaying the end screen. \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+
+
+\subsubsection{Individual Product Use Cases}
+
+\subsection{Functional Requirements}
+
+\section{Non-functional Requirements}
+
+\subsection{Look and Feel Requirements}
+\subsubsection{Appearance Requirements}
+The UI must be easy to understand and use.
+
+\subsubsection{Style Requirements}
+The UI theme must be inspired from wordle's UI.
+
+\subsection{Usability and Humanity Requirements}
+
+\subsection{Performance Requirements}
+
+\subsection{Operational and Environmental Requirements}
+\subsubsection{Expected Physical Environment}
+The system must not require an internet connection nor should it require high-performance graphic cards.
+\subsubsection{Requirements for Interfacing with Adjacent Systems}
+The program should not access and make changes to any file outside its own folder
+\subsubsection{Productization Requirements}
+The game must be distributed as a zip folder and its total size must be below 20Gb.
+\subsubsection{Release Requirements}
+The product will have a final release date corresponding to the last day of classes.
+\subsection{Maintainability and Support Requirements}
+
+\subsection{Security Requirements}
+
+\subsection{Cultural Requirements}
+\subsubsection{Cultural Requirements}
+The game can't suggest offensive words or non-english words.
+
+\subsubsection{Political Requirements}
+The game can't suggest politically charged words.
+
+\subsection{Legal Requirements}
+
+\subsection{Health and Safety Requirements}
+The project will not include any form of high frequency flashes, contrast 
+alteration, or brightness variation which may cause epileptic seizures for some 
+users. To prevent repetitive stress injury and addiction, a warning will be 
+displayed by the system encouranging users to take regular breaks.
+\section{Project Issues}
+
+\subsection{Open Issues}
+
+\subsection{Off-the-Shelf Solutions}
+
+\subsection{New Problems}
+
+\subsection{Tasks}
+
+\subsection{Migration to the New Product}
+N/A. This product will remain independent of the source code.
+\subsection{Risks}
+
+\subsection{Costs}
+
+The development of the project will have no cost. Under the MIT licence the original source project is allowed to be modified and distributed freely. The applications used for development are also free. An estimated time cost for development is 6 hours a week from all developers. 
+
+\subsection{User Documentation and Training}
+\subsubsection{User Documentation Requirements}
+Instructions will be included as an option in the game's main menu.
+The game's directory will contain a README file providing installation instructions.
+
+\subsubsection{Training Requirements}
+No specific training is necessary to play Wordle 2.0. Controls should be intuitive.
+
+\subsection{Waiting Room}
+
+\subsection{Ideas for Solutions}
+
+\bibliography{cite}
+\bibliographystyle{ieeetr}
+\nocite{*}
+
+\newpage
+
+\section{Appendix}
+
+This section has been added to the Volere template.  This is where you can place
+additional information.
+
+\subsection{Symbolic Parameters}
+
+The definition of the requirements will likely call for SYMBOLIC\_CONSTANTS.
+Their values are defined in this section for easy maintenance.
+
+
+\end{document}

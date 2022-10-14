@@ -1,0 +1,4 @@
+Meeting Minutes Tues Mar 22, 2022
+Topics Discussed: Rev0 demo, Code regarding wordle
+
+Slides for rev0 demo were prepared. Team discussed tests to be performed on the rev0 game.

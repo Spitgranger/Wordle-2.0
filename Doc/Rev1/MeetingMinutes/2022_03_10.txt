@@ -1,0 +1,4 @@
+Meeting Minutes Thurs Mar 10, 2022
+Topics Discussed: Design Documentation Work, Code regarding wordle
+
+The team completed the test plan and has started work on the design documents. The work will be split between all three team members equally. The team has completed the module guide and will start work on the MIS. Implementation of the game was discussed. More features including the darkmode, word lengths, and instructions will be implemented in the coming weeks.

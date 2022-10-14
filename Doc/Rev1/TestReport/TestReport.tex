@@ -1,0 +1,510 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{float}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Report\\Wordle 2.0}
+
+\author{Team 8, Goufs
+		\\ Richard Fan, fanr13
+		\\ Noel Zacharia, zacharin
+		\\ Biranugan Pirabaharan, pirabahb
+}
+
+\date{\today}
+
+%\input{../Comments}
+\newcounter{mnum}
+\newcommand{\mthemnum}{M\themnum}
+\newcommand{\mref}[1]{M\ref{#1}}
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+April 1, 2022 & 1.0 & Initial document and tests for Gameplay Requirements\\
+April 10, 2022 & 1.1 & Finished Test Report\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\pagenumbering{arabic}
+\newpage
+This document outlines the results of the tests performed on the Wordle 2.0 game to ensure its adherence to SRS requirements. 
+\newpage
+\section{Functional Requirements Evaluation}
+\subsection{Gameplay Requirements}
+\begin{enumerate} 
+	\item \textbf{FR-GP1\\}
+	\textbf{Description}: Test for the share functionality.\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized and a game has been played.\\
+	\textbf{Input}: Share button clicked.\\
+	\textbf{Output}: Player results copied to clipboard in the form of emojis. \\
+	\textbf{Expected}: Player results copied to clipboard in the form of tile emojis.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP2\\}
+	\textbf{Description}: Test for key input functionality\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: Word "TREES" entered using on screen keyboard\\
+	\textbf{Output}: Word accepted\\
+	\textbf{Expected}: Word accepted.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP3\\}
+	\textbf{Description}: Test for tile colour functionality\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: Word entered with the same first letter as the target word.\\
+	\textbf{Output}: First tile highlighted green. \\
+	\textbf{Expected}: First tile highlighted green.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP4\\}
+	\textbf{Description}: Test for tile colour functionality\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: Word entered with the same last letter as the target word.\\
+	\textbf{Output}: Last tile highlighted green. \\
+	\textbf{Expected}: Last tile highlighted green.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP5\\}
+	\textbf{Description}: Test for tile colour functionality\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: Word entered with a different first letter  compared to the target word.\\
+	\textbf{Output}: First tile highlighted grey. \\
+	\textbf{Expected}: First tile highlighted grey or yellow.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+		
+	\item \textbf{FR-GP6\\}
+	\textbf{Description}: Test for word validity\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: "AAAAA" entered.\\
+	\textbf{Output}: Alert displayed with the text "Word Not Found". \\
+	\textbf{Expected}: Alert displayed with the text "Word Not Found".\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+		
+	\item \textbf{FR-GP7\\}
+	\textbf{Description}: Test for word acceptance\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: "FISH" Entered.\\
+	\textbf{Output}: Alert displayed with the text "Not Enough Letters". \\
+	\textbf{Expected}: Alert displayed with the text "Not Enough Letters".\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP8\\}
+	\textbf{Description}: Test for letter recognition \\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: Word is entered with three of its letters matching the position of those in the target word.\\
+	\textbf{Output}: Three letters are highlighted green. \\
+	\textbf{Expected}: Three letters are highlighted green.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP9\\}
+	\textbf{Description}: Test gameplay functionality\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized and a word has been entered.\\
+	\textbf{Input}: Tester attempts to modify existing guess.\\
+	\textbf{Output}: The game does not allow for changes to existing guesses. \\
+	\textbf{Expected}:The game does not allow for changes to existing guesses.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP10\\}
+	\textbf{Description}: Test word length functionality\\
+	\textbf{Type}: Automated\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: Automated script checks for the presence of word length button elements\\
+	\textbf{Output}: Script returns true \\
+	\textbf{Expected}: Script returns true\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP11\\}
+	\textbf{Description}: Test word length functionality\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized.\\
+	\textbf{Input}: Tester clicks "FOUR" button\\
+	\textbf{Output}: Gameboard changes to four letters and all functionality is retained. \\
+	\textbf{Expected}: Gameboard changes to four letters and all functionality is retained.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-GP12\\}
+	\textbf{Description}: Test reset functionality\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: The Wordle 2.0 site has been initialized and the target word has been entered.\\
+	\textbf{Input}: Tester clicks "FIVE" button\\
+	\textbf{Output}: Gameboard is cleared and target word is changed.  \\
+	\textbf{Expected} Gameboard is cleared and target word is changed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\subsection{User Interface Requirements}
+	
+	\item \textbf{FR-UI1\\}
+	\textbf{Description}: Tester should be able to see the on-screen keyboard.\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Empty web browser page\\
+	\textbf{Input}: Tester enters Wordle 2.0 URL.\\
+	\textbf{Output}: On-screen keyboard is displayed with QWERTY layout.  \\
+	\textbf{Expected} On-screen keyboard is displayed with QWERTY layout.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI2\\}
+	\textbf{Description}: Tester should be able to see the tile gameboard.\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Empty web browser page\\
+	\textbf{Input}: Tester enters Wordle 2.0 URL.\\
+	\textbf{Output}: Gameboard with 5 columns and 6 rows is displayed.  \\
+	\textbf{Expected} Gameboard of the appropriate length is displayed..\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI3\\}
+	\textbf{Description}: Tester should be able to select the dark theme.\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester clicks on the theme button.\\
+	\textbf{Output}: The theme changes to dark mode.\\
+	\textbf{Expected} The theme changes to dark mode.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI4\\}
+	\textbf{Description}: Tester should be able to see the rules of the game.\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester clicks on the rules button.\\
+	\textbf{Output}: Message box containing the Wordle 2.0 rules is displayed  \\
+	\textbf{Expected} Message box containing the Wordle 2.0 rules is displayed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI5\\}
+	\textbf{Description}: Tester should be able to see the player statistics.\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester clicks on the statistics button.\\
+	\textbf{Output}: Message box containing player statistics displayed.\\
+	\textbf{Expected} Message box containing player statistics displayed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI6\\}
+	\textbf{Description}: Tester should be able to see number of games played after each game\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester enters target word\\
+	\textbf{Output}: Message box containing player statistics displayed.\\
+	\textbf{Expected} Message box containing player statistics displayed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI7\\}
+	\textbf{Description}: Tester should be able to see the win/loss ratio after each game\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester enters target word\\
+	\textbf{Output}: Message box containing player statistics displayed.\\
+	\textbf{Expected} Message box containing player statistics displayed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI8\\}
+	\textbf{Description}: Tester should be able to see the current streak of correct guesses after each game\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester enters target word\\
+	\textbf{Output}: Message box containing player statistics displayed.\\
+	\textbf{Expected} Message box containing player statistics displayed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI9\\}
+	\textbf{Description}: Tester should be able to see the best streak of correct guesses after each game\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester enters target word\\
+	\textbf{Output}: Message box containing player statistics displayed.\\
+	\textbf{Expected} Message box containing player statistics displayed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	\item \textbf{FR-UI10\\}
+	\textbf{Description}: Tester should be able to see the guess distribution after each game\\
+	\textbf{Type}: Manual\\
+	\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+	\textbf{Input}: Tester enters target word\\
+	\textbf{Output}: Message box containing player statistics displayed.\\
+	\textbf{Expected} Message box containing player statistics displayed.\\
+	\textbf{Result}: \textcolor{green}{PASS}\\
+	
+	
+\end{enumerate}
+
+
+
+
+
+
+\section{Nonfunctional Requirements Evaluation}
+
+\begin{enumerate}
+\subsection{Look and Feel Tests}
+\item \textbf{NFR-LF1\\}
+\textbf{Description}: Tests the ease of use and playability of the game.\\
+\textbf{Type}: Manual\\
+\textbf{Tester}: Group of randomly selected participants.\\
+\textbf{Pass Criteria}: Survey score of at least $\hypertarget{percent_agreement}{PERCENT\_AGREEMENT}$.\\
+\textbf{Result} 95 percent of participants in agreement.\\
+\textbf{Result}: \textcolor{green}{PASS}\\
+
+\item \textbf{NFR-LF2\\}
+\textbf{Description}: Tests that the design of Wordle 2.0 was inspired by the orginal Wordle game.\\
+\textbf{Type}: Manual\\
+\textbf{Tester}: Group of randomly selected participants.\\
+\textbf{Pass Criteria}: Survey score of at least $\hypertarget{percent_agreement}{PERCENT\_AGREEMENT}$.\\
+\textbf{Result} 100 percent of participants in agreement.\\
+\textbf{Result}: \textcolor{green}{PASS}\\
+\subsection{Usability}
+
+\item \textbf{NFR-UH1\\}
+\textbf{Description}: Tests that the game is playable by children at or above $\hypertarget{min_age}{MIN\_AGE}$ \\
+\textbf{Type}: Manual\\
+\textbf{Tester}: Group of randomly selected children.\\
+\textbf{Pass Criteria}: Survey score of at least $\hypertarget{percent_agreement}{PERCENT\_AGREEMENT}$.\\
+\textbf{Result} 87 percent of participants in agreement.\\
+\textbf{Result}: \textcolor{green}{PASS}\\
+
+\item \textbf{NFR-UH2\\}
+\textbf{Description}: Tests that the game is playable with one hand.\\
+\textbf{Type}: Manual\\
+\textbf{Tester}: Group of randomly selected participants .\\
+\textbf{Pass Criteria}: Survey score of at least $\hypertarget{percent_agreement}{PERCENT\_AGREEMENT}$.\\
+\textbf{Result} 100 percent of participants in agreement.\\
+\textbf{Result}: \textcolor{green}{PASS}\\
+
+\item \textbf{NFR-UH3\\}
+\textbf{Description}: Tests that the game is of appropriate difficulty.\\
+\textbf{Type}: Manual\\
+\textbf{Tester}: Group of randomly selected participants .\\
+\textbf{Pass Criteria}: Survey score of at least $\hypertarget{percent_agreement}{PERCENT\_AGREEMENT}$.\\
+\textbf{Result} 100 percent of participants in agreement.\\
+\textbf{Result}: \textcolor{green}{PASS}\\
+
+
+		
+\subsection{Performance}
+
+\item \textbf{NFR-P1\\}
+\textbf{Description}: Tests to see if game elements are added under $\hypertarget{min_time}{MIN\_TIME}$.\\
+\textbf{Type}: Automated\\
+\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+\textbf{Input}: Test script automatically enters 500 words and measures the time it takes for the element to appear in the page's HTML.\\
+\textbf{Output}: Average time of 0.06s.\\
+\textbf{Expected} Average time under $\hypertarget{min_time}{MIN\_TIME}$.\\
+\textbf{Result}: \textcolor{green}{PASS}\\
+
+\item \textbf{NFR-P2\\}
+\textbf{Description}: Tests to see if game page is loaded under  $\hypertarget{min_time}{MIN\_TIME}$.\\
+\textbf{Type}: Automated\\
+\textbf{Initial State}: Wordle 2.0 web page is initialized.\\
+\textbf{Input}: Test script automatically reloads page and measures the time needed.\\
+\textbf{Output}: Average time of 0.11s.\\
+\textbf{Expected} Average time under $\hypertarget{min_time}{MIN\_TIME}$.\\
+\textbf{Result}: \textcolor{green}{PASS}\\
+
+
+\end{enumerate}
+\newpage
+\section{Comparison to Existing Implementation}	
+
+The original game on which Wordle 2.0 is based, Not Wordle, did not contain any form of testing. With Wordle 2.0, we have documented the design process and written a comprehensive Software Requirements Specification to ensure that our software would behave as designed. To ensure adherence to the SRS, the development team has written 40 test cases, encompassing end to end testing, unit testing, and functional testing. The documentation and testing have allowed the team to create a product that is fully correct in its implementation and is also fully traceable from requirements to testing.
+
+\section{Unit Testing}
+Unit testing was conducted to test individual components within modules. This ensured that each module was correct in its behavior; an important aspect in applications with interconnected modular structures.  
+\section{Changes Due to Testing}
+No changes were made as a result of testing to the module decomposition or internal design. Changes were made to the code to correct logical bugs revealed by testing. Graphical enhancements were made to the user interface in response to feedback gathered through the usability survey.
+
+\section{Automated Testing}
+Since Wordle 2.0 is a GUI based application, automated tests played a minimal part in the overall testing. Automated tests were done to ensure existence of HTML elements and structure, but could not thoroughly test the user interface. Selenium and Python's built-in assertion library were used to automate tests where appropriate. 
+\section{Trace to Requirements}
+
+\begin{landscape}
+	
+	\begin{table}[H]
+		% \begin{center} 
+			\caption{\textbf{Traceability Matrix for UI Requirements}} 
+			\label{trace2}
+			\begin{tabularx}{\textwidth}{cc|c|c|c|c|c|c|c|c|c|c|c}
+				\cline{3-12}
+				& & \multicolumn{10}{c|}{Requirements} \\ \cline{3-12}
+				& & FR1 & FR2 & FR3 & FR4 & FR5 & FR6 & FR7 & FR8 & FR9 & 
+				FR10  \\ \cline{1-12}
+				\multicolumn{1}{|c|}{\multirow{10}{*}{Test Cases} } &
+				\multicolumn{1}{|c|} {FR-UI1} &X&&&&&&&&&&\\ \cline{2-12}
+				\multicolumn{1}{|c|}{} 	                  &
+				\multicolumn{1}{|c|}{FR-UI2} &&X&&&&&&&& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI3} &&&X&&&&&&& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI4} &&&&X&&&&&& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI5} &&&&&X&&&&& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI6} &&&&&&X&&&& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI7} &&&&&&&X&&& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI8} &&&&&&&&X&& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI9} &&&&&&&&&X& \\ \cline{2-12}
+				\multicolumn{1}{|c|}{}                        &
+				\multicolumn{1}{|c|} {FR-UI10} &&&&&&&&&&X \\ \cline{1-12}
+				
+			\end{tabularx}
+		\end{table}
+		
+		\begin{table}[H]
+			% \begin{center} 
+				\caption{\textbf{Traceability Matrix for Gameplay Requirements}} 
+				\label{trace2}
+				\begin{tabularx}{\textwidth}{cc|c|c|c|c|c|c|c|c|c|c|c|c|c}
+					\cline{3-14}
+					& & \multicolumn{12}{c|}{Requirements} \\ \cline{3-14}
+					& & FR11 & FR12 & FR13 & FR14 & FR15 & FR16 & FR17 & FR18 & FR19 & 
+					FR20 & FR21 & FR22  \\ \cline{1-14}
+					\multicolumn{1}{|c|}{\multirow{10}{*}{Test Cases} } &
+					\multicolumn{1}{|c|} {FR-GP1} &X&&&&&&&&&&&&\\ \cline{2-14}
+					\multicolumn{1}{|c|}{} 	                  &
+					\multicolumn{1}{|c|}{FR-GP2} &&X&&&&&&&&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP3} &&&X&&&&&&&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP4} &&&&X&&&&&&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP5} &&&&&X&&&&&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP6} &&&&&&X&&&&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP7} &&&&&&&X&&&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP8} &&&&&&&&X&&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP9} &&&&&&&&&X&&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP10} &&&&&&&&&&X&& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP11} &&&&&&&&&&&X& \\ \cline{2-14}
+					\multicolumn{1}{|c|}{}                        &
+					\multicolumn{1}{|c|} {FR-GP12} &&&&&&&&&&&&X \\ \cline{1-14}
+				\end{tabularx}
+			\end{table}
+			
+			\begin{table}[H]
+				% \begin{center} 
+					\caption{\textbf{Traceability Matrix for Non Functional Requirements}} 
+					\label{trace2}
+					\begin{tabularx}{\textwidth}{cc|c|c|c|c|c|c|c|c}
+						\cline{3-9}
+						& & \multicolumn{7}{c|}{Requirements} \\ \cline{3-9}
+						& & LF1 & LF2 & UH1 & UH2 & UH4 & P1 & P2  \\ 
+						\cline{1-9}
+						\multicolumn{1}{|c|}{\multirow{10}{*}{Test Cases} } &
+						\multicolumn{1}{|c|} {NFR-LF1} &X&&&&&&\\ \cline{2-9}
+						\multicolumn{1}{|c|}{} 	                  &
+						\multicolumn{1}{|c|}{NFR-LF2} &&X&&&&& \\ \cline{2-9}
+						\multicolumn{1}{|c|}{}                        &
+						\multicolumn{1}{|c|} {NFR-UH1} &&&X&&&&\\ \cline{2-9}
+						\multicolumn{1}{|c|}{}                        &
+						\multicolumn{1}{|c|} {NFR-UH2} &&&&X&&& \\ \cline{2-9}
+						\multicolumn{1}{|c|}{}                        &
+						\multicolumn{1}{|c|} {NFR-UH4} &&&&&X&& \\ \cline{2-9}
+						\multicolumn{1}{|c|}{}                        &
+						\multicolumn{1}{|c|} {NFR-P1} &&&&&&X& \\ \cline{2-9}
+						\multicolumn{1}{|c|}{}                        &
+						\multicolumn{1}{|c|} {NFR-P2} &&&&&&&X \\ \cline{1-9}
+						
+					\end{tabularx}
+				\end{table}
+				
+			\end{landscape}
+			
+
+
+
+		
+\section{Trace to Modules}	
+
+
+	\begin{table}[H]
+	\centering
+	\begin{tabular}{p{0.2\textwidth} p{0.6\textwidth}}
+		\toprule
+		\textbf{Req.} & \textbf{Modules}\\
+		\midrule
+		FR1 & M12, M14\\
+		FR2 & M3, M12, M14\\
+		FR3 & M4\\
+		FR4 & M10\\
+		FR5 & M9, M11\\
+		FR6 & M9, M11\\
+		FR7 & M9, M11\\
+		FR8 & M9, M11\\
+		FR9 & M9, M11\\
+		FR10 & M9, M11\\
+		FR11 & M16, M18\\
+		FR12 &  M1, M5, M16\\
+		FR13 & M13, M7, M6, M2\\
+		FR14 & M13, M7, M6\\
+		FR15 & M13, M7, M6\\
+		FR16 & M1, M15\\
+		FR17 & M1, M15\\
+		FR18 & M13, M6, M17\\
+		FR19 & M5\\
+		FR20 & M5\\
+		FR21 & M5\\
+		FR22 & M5, M15, M2\\
+		
+		\bottomrule
+	\end{tabular}
+	\caption{Trace Between Requirements and Modules}
+	\label{TblRT}
+\end{table}
+	
+
+\section{Code Coverage Metrics}
+
+\subsection{Symbolic Parameters}
+
+$\hypertarget{min_age}{MIN\_AGE}$ = 10\\
+$\hypertarget{min_time}{MIN\_TIME}$ = 0.25\\
+$\hypertarget{unit_testing_coverage}{UNIT\_TEST\_COVERAGE}$ = 40\\
+$\hypertarget{percent_agreement}{PERCENT\_AGREEMENT}$ = 85\\
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\end{document}

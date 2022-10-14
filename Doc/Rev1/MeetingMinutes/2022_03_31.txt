@@ -1,0 +1,4 @@
+Meeting Minutes Thurs Mar 31, 2022
+Topics Discussed: Code regarding wordle, Final Demo
+
+Final demo slides were made. Bugs regarding the word lengths and color updates were discussed. Code implementation has been finished. Test cases were made.

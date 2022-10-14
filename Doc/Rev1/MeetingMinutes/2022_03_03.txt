@@ -1,0 +1,4 @@
+Meeting Minutes Thurs Mar 3, 2022
+Topics Discussed: Test Plan Progress
+
+Progress regarding the test plan was discussed. The team completed NFR, FR Tests and are working on the next part of the document.
